@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Ti 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <div id="heart" class="heart">❤️</div>
+    <p id="hint">Presiona el corazón</p>
+
+    <div id="message" class="message hidden"></div>
+
+    <!-- Botones Sí / No -->
+    <div id="choices" class="choices hidden">
+      <button id="yes" class="btn yes">Sí 💕</button>
+      <button id="no" class="btn no">No 💔</button>
+    </div>
+
+    <div id="final" class="final hidden">
+      💖 Sabía que dirías que sí 💖<br>
+      Te amo infinitamente ✨
+    </div>
+  </div>
+
+  <!-- Corazones flotantes -->
+  <div class="hearts"></div>
+
+  <!-- Música -->
+  <iframe
+    id="music"
+    src="https://www.youtube.com/embed/PI3LAgGBxqU?enablejsapi=1&loop=1&playlist=PI3LAgGBxqU"
+    allow="autoplay"
+    frameborder="0"
+  ></iframe>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const hint = document.getElementById("hint");
+    const message = document.getElementById("message");
+
+    const choices = document.getElementById("choices");
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const finalMsg = document.getElementById("final");
+
+    const text = `
+Para el amor de mi vida:
+
+Si pudiera elegir un lugar seguro, sería a tu lado.
+
+Cuanto más tiempo estoy contigo, más te amo <3
+
+Por eso quiero preguntarte,
+¿quieres ser mi san Valentín bonita?
+
+~Te adoro guapa <3
+`;
+
+    let activated = false;
+
+    heart.addEventListener("click", () => {
+      if (activated) return;
+      activated = true;
+
+      heart.classList.add("explode");
+      hint.style.display = "none";
+
+      setTimeout(() => {
+        heart.style.display = "none";
+        message.classList.remove("hidden");
+        typeWriter(text, message, () => {
+          choices.classList.remove("hidden");
+        });
+        startHearts();
+        playMusic();
+      }, 900);
+    });
+
+    function typeWriter(text, element, callback) {
+      let i = 0;
+      element.textContent = "";
+      const interval = setInterval(() => {
+        element.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+          clearInterval(interval);
+          if (callback) callback();
+        }
+      }, 35);
+    }
+
+    function startHearts() {
+      const container = document.querySelector(".hearts");
+      setInterval(() => {
+        const h = document.createElement("div");
+        h.className = "floating-heart";
+        h.textContent = "❤";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.animationDuration = 3 + Math.random() * 3 + "s";
+        container.appendChild(h);
+        setTimeout(() => h.remove(), 6000);
+      }, 250);
+    }
+
+    function playMusic() {
+      const iframe = document.getElementById("music");
+      iframe.src += "&autoplay=1";
+    }
+
+    // BOTÓN SÍ
+    yesBtn.addEventListener("click", () => {
+      choices.classList.add("hidden");
+      finalMsg.classList.remove("hidden");
+      finalMsg.classList.add("love");
+    });
+
+    // BOTÓN NO (HUYE)
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    function moveNo() {
+      const x = Math.random() * 60 - 30;
+      const y = Math.random() * 60 - 30;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+  </script>
+
+</body>
+</html>
