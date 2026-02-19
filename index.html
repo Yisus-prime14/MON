@@ -7,36 +7,38 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<body>
+  <div class="contenedor">
 
-  <!-- Contenido principal -->
-  <div class="container">
-    <div id="heart" class="heart">❤️</div>
-    <p id="hint">Presiona el corazón</p>
+    <div class="gatitos">
+      <!-- Gato naranja -->
+      <div class="gatito naranja" onclick="mostrarMensaje()">🐈</div>
 
-    <div id="message" class="message hidden"></div>
-
-    <!-- Botones Sí / No -->
-    <div id="choices" class="choices hidden">
-      <button id="yes" class="btn yes">Sí 💕</button>
-      <button id="no" class="btn no">No 💔</button>
+      <!-- Gato negro con blanco -->
+      <div class="gatito blanco-negro" onclick="mostrarMensaje()">🐈‍⬛</div>
     </div>
 
-    <div id="final" class="final hidden">
-      💖 Sabía que dirías que sí 💖<br>
-      Te amo infinitamente ✨
+    <div id="mensaje" class="mensaje oculto">
+      <p>
+        Eres una grandiosa persona bonita, admiro mucho tu esfuerzo,
+        eres una persona maravillosa, verás que pronto vas a tener
+        todo lo que desees: casita, carro y dinero guardado 💖
+      </p>
+
+      <p class="amor">
+        Te amo muchísimo hermosa 🥺💘
+      </p>
     </div>
   </div>
 
-  <!-- Corazones flotantes -->
-  <div class="hearts"></div>
+  <script>
+    function mostrarMensaje() {
+      document.getElementById("mensaje").classList.remove("oculto");
+    }
+  </script>
+</body>
 
-  <!-- Música -->
-  <iframe
-    id="music"
-    src="https://www.youtube.com/embed/PI3LAgGBxqU?enablejsapi=1&loop=1&playlist=PI3LAgGBxqU"
-    allow="autoplay"
-    frameborder="0"
-  ></iframe>
+
 
   <script>
     const heart = document.getElementById("heart");

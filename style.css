@@ -1,156 +1,107 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef7);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
-/* Pantalla contraseña */
-.lock {
-  background: rgba(255,255,255,0.25);
-  padding: 30px;
-  border-radius: 25px;
-  backdrop-filter: blur(12px);
+.contenedor {
   text-align: center;
-  color: #fff;
+  padding: 20px;
 }
 
-.lock input {
-  padding: 12px;
-  border-radius: 20px;
-  border: none;
-  width: 200px;
-  text-align: center;
-  margin-top: 10px;
+h1 {
+  color: #ff4d88;
+  margin-bottom: 20px;
 }
 
-.lock button {
-  margin-top: 15px;
-  padding: 10px 25px;
-  border: none;
+.gatitos {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.gatito {
+  font-size: 60px;
+  cursor: pointer;
+  animation: flotar 2s infinite ease-in-out;
+  transition: transform 0.3s;
+}
+
+.gatito:hover {
+  transform: scale(1.2);
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.mensaje {
+  background: white;
+  padding: 20px;
   border-radius: 20px;
-  background: #ff4d6d;
-  color: #fff;
+  max-width: 320px;
+  margin: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: aparecer 1s ease;
+}
+
+.mensaje p {
+  color: #444;
   font-size: 16px;
 }
 
-.error { margin-top: 10px; color: #ffe0e0; }
-
-.hidden { display: none; }
-
-/* Contenido */
-.container {
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-  z-index: 2;
-}
-
-/* Corazón */
-.heart {
-  font-size: 90px;
-  cursor: pointer;
-  animation: pulse 1.2s infinite;
-}
-
-#hint { opacity: 0.9; }
-
-/* Mensaje */
-.message {
-  max-width: 90vw;
-  background: rgba(255,255,255,0.25);
-  padding: 25px;
-  border-radius: 25px;
-  backdrop-filter: blur(12px);
-  white-space: pre-wrap;
-  animation: fadeIn 1.5s ease;
-  line-height: 1.6;
-}
-
-/* Botones */
-.choices {
-  margin-top: 20px;
-}
-
-.btn {
-  padding: 12px 26px;
-  border-radius: 25px;
-  border: none;
+.mensaje .amor {
+  margin-top: 15px;
   font-size: 18px;
-  margin: 0 10px;
+  color: #ff4d88;
+  font-weight: bold;
+}
+
+.oculto {
+  display: none;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.gatitos {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.gatito {
+  font-size: 70px;
   cursor: pointer;
+  animation: flotar 2s infinite ease-in-out;
+  transition: transform 0.3s;
 }
 
-.yes {
-  background: #ff4d6d;
-  color: #fff;
+.gatito:hover {
+  transform: scale(1.25);
 }
 
-.no {
-  background: #555;
-  color: #fff;
-  position: relative;
+/* Gato naranja */
+.naranja {
+  filter: drop-shadow(0 0 10px #ffb347);
 }
 
-/* Mensaje final */
-.final {
-  margin-top: 25px;
-  font-size: 22px;
-  animation: fadeIn 1.5s ease;
+/* Gato negro con blanco */
+.blanco-negro {
+  filter: drop-shadow(0 0 10px #555);
 }
-
-.love {
-  animation: pulse 1.2s infinite;
-}
-
-/* Animaciones */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.explode {
-  animation: explode 0.9s forwards;
-}
-
-@keyframes explode {
-  to { transform: scale(3); opacity: 0; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Corazones flotantes */
-.hearts {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.floating-heart {
-  position: absolute;
-  bottom: -20px;
-  font-size: 22px;
-  color: rgba(255,255,255,0.85);
-  animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-110vh); opacity: 0; }
-}
-
-/* Ocultar música */
-iframe { display: none; }
